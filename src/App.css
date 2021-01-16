@@ -1,8 +1,14 @@
+html, body {
+  margin:0;
+  padding:0;
+  background-color: #f8edeb;
+} 
 .App {
   text-align: center;
-  width: 30%;
-  height:100vh;
+  width: 100%;
+  height:100%;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -14,19 +20,31 @@
   margin-top: 10%;
 }
 .btn-area {
-  width:100%;
-  height:100%;
+  width:365px;
+  height:385px;
 }
 .btn-calc {
-  width:100px;
-  height:100px;
+  width:80px;
+  height:80px;
   padding: 0;
+  margin: 5px;
   font-size: 1.1em;
   font-weight: 900;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px 0 black;
+}
+.btn-calc:hover {
+  background-color: rgb(230,230,230);
+  box-shadow: 0 4px 8px 0 black;
+}
+.btn-calc:active {
+  box-shadow: inset 0 2px 4px 0 black;
+  background-color: rgb(220,220,220);
 }
 h1 {
   padding: 0;
   margin:0;
+  height:40px;
 }
 
 

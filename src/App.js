@@ -13,30 +13,27 @@ class App extends React.Component {
     else if(value === "="){
       this.calculate()
     }
-    
     else {
       this.setState({calBar : this.state.calBar + value})
     }
   }
+
   calculate = () =>{
     let calBarArr = this.state.calBar.split("")
+
     calBarArr.forEach((cal,index)=>{
       if (cal === "+") {
         this.setState({calBar: parseInt(calBarArr.slice(0,index).join("")) + parseInt(calBarArr.slice(index + 1,calBarArr.length).join(""))})
       }
       else if (cal === "-") {
         this.setState({calBar: parseInt(calBarArr.slice(0,index).join("")) - parseInt(calBarArr.slice(index + 1,calBarArr.length).join(""))})
-
       }
       else if (cal === "*") {
         this.setState({calBar: parseInt(calBarArr.slice(0,index).join("")) * parseInt(calBarArr.slice(index + 1,calBarArr.length).join(""))})
-
       }
       else if (cal === "/"){
         this.setState({calBar: parseInt(calBarArr.slice(0,index).join("")) / parseInt(calBarArr.slice(index + 1,calBarArr.length).join(""))})
-
       }
-
     })
   }
 
@@ -45,8 +42,8 @@ class App extends React.Component {
       <div className="App">
         <h1>{this.state.calBar}</h1>
         <div className="btn-area">
-        {this.state.buttons.map((key,index)=>{ return (
-          <Buttons function={()=> this.buttonHnadler(`${key}`)} key={index} label={key}/>)
+        {this.state.buttons.map((item,index)=>{ return (
+          <Buttons function={()=> this.buttonHnadler(`${item}`)} key={index} label={item}/>)
         })}
         </div>
 
