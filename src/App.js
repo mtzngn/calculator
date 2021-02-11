@@ -19,21 +19,41 @@ class App extends React.Component {
   }
 
   calculate = () =>{
-    let calBarArr = this.state.calBar.split("")
 
+    let calBarArr = this.state.calBar.split("")
+    // console.log(calBarArr)
+    let op =[];
+    let opIndex = [0];
     calBarArr.forEach((cal,index)=>{
-      if (cal === "+") {
-        this.setState({calBar: parseInt(calBarArr.slice(0,index).join("")) + parseInt(calBarArr.slice(index + 1,calBarArr.length).join(""))})
+      if(cal === "+" || cal === "-" || cal === "*" || cal === "/") {
+        op.push(cal)
+        opIndex.push(index)
       }
-      else if (cal === "-") {
-        this.setState({calBar: parseInt(calBarArr.slice(0,index).join("")) - parseInt(calBarArr.slice(index + 1,calBarArr.length).join(""))})
+    } )
+    opIndex.push(calBarArr.length)
+    // console.log(op)
+    // console.log(opIndex)
+    let cal = parseInt(calBarArr[0]);
+
+    op.forEach((op,i)=>{
+      let rightSide = parseInt(calBarArr.slice(opIndex[i + 1] + 1,opIndex[i + 2]).join(""));
+
+      if (op === "+") {
+        cal = cal + rightSide
       }
-      else if (cal === "*") {
-        this.setState({calBar: parseInt(calBarArr.slice(0,index).join("")) * parseInt(calBarArr.slice(index + 1,calBarArr.length).join(""))})
+      else if (op === "-") {
+        cal = cal - rightSide
       }
-      else if (cal === "/"){
-        this.setState({calBar: parseInt(calBarArr.slice(0,index).join("")) / parseInt(calBarArr.slice(index + 1,calBarArr.length).join(""))})
+      else if (op === "*") {
+        // console.log(calBarArr.slice(2,3).join(""))
+        // console.log(cal)
+        // console.log(rightSide)
+        cal = cal * rightSide
       }
+      else if (op === "/"){
+       cal =  cal / rightSide
+      }
+      this.setState({calBar: cal})
     })
   }
 
@@ -46,7 +66,6 @@ class App extends React.Component {
           <Buttons function={()=> this.buttonHnadler(`${item}`)} key={index} label={item}/>)
         })}
         </div>
-
       </div>
     )
   }
