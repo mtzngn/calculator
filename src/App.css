@@ -49,9 +49,17 @@ html, body {
               inset -2px -2px 4px 1px rgba(255,255,255,0.5);
 }
 h1 {
+  display:flex;
+  justify-content: flex-end;
   padding: 0;
+  padding-right: 5px;
   margin:0;
-  height:40px;
+  height:50px;
+  width:296.5px;
+  border: 1px solid rgb(108, 163, 157);
+  border-radius: 25px;
+  box-shadow: inset 1px 1px 4px 1px rgba(0,0,0,0.4),
+              inset -1px -1px 2px 1px rgba(255,255,255,0.4);
 }
 
 
