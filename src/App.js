@@ -21,7 +21,9 @@ class App extends React.Component {
   calculate = () =>{
 
     let calBarArr = this.state.calBar.split("")
-    // console.log(calBarArr)
+    let calBarClean = this.state.calBar.split(/[^0-9]/);
+    console.log(calBarArr)
+    console.log(calBarClean)
     let op =[];
     let opIndex = [0];
     calBarArr.forEach((cal,index)=>{
@@ -31,12 +33,12 @@ class App extends React.Component {
       }
     } )
     opIndex.push(calBarArr.length)
-    // console.log(op)
-    // console.log(opIndex)
-    let cal = parseInt(calBarArr[0]);
+    console.log(op)
+    console.log(opIndex)
+    let cal = parseInt(calBarClean[0]);
 
     op.forEach((op,i)=>{
-      let rightSide = parseInt(calBarArr.slice(opIndex[i + 1] + 1,opIndex[i + 2]).join(""));
+      let rightSide = parseInt(calBarClean.slice(i + 1, i + 2).join(""));
 
       if (op === "+") {
         cal = cal + rightSide
@@ -45,9 +47,9 @@ class App extends React.Component {
         cal = cal - rightSide
       }
       else if (op === "*") {
-        // console.log(calBarArr.slice(2,3).join(""))
-        // console.log(cal)
-        // console.log(rightSide)
+        console.log(calBarArr.slice(2,3).join(""))
+        console.log(cal)
+        console.log(rightSide)
         cal = cal * rightSide
       }
       else if (op === "/"){
